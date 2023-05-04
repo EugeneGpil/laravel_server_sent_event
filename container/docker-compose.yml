@@ -19,3 +19,15 @@ services:
     environment:
       PHP_IDE_CONFIG: "serverName=${PHP_IDE_CONFIG_SERVER_NAME}"
     restart: unless-stopped
+
+  nginx_dev:
+    build:
+      context: nginx
+      args:
+        - NGINX_VERSION=${NGINX_VERSION}
+    working_dir: /usr/share/nginx/backend
+    volumes:
+      - ../back:/usr/share/nginx/backend
+    restart: unless-stopped
+    ports:
+      - ${PORT_NGINX}:80
