@@ -14,7 +14,7 @@ services:
         - DOCKERHOST=${DOCKERHOST}
     working_dir: /usr/share/nginx/backend
     volumes:
-      - ../backend:/usr/share/nginx/backend
+      - ../back:/usr/share/nginx/backend
     command: bash -c "service php${PHP_VERSION}-fpm start && tail -F anything"
     environment:
       PHP_IDE_CONFIG: "serverName=${PHP_IDE_CONFIG_SERVER_NAME}"
