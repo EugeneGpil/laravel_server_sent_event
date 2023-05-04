@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  php:
+    build:
+      context: php
+      args:
+        - PHP_VERSION=${PHP_VERSION}
+        - COMPOSER_VERSION=${COMPOSER_VERSION}
+        - INSTALL_XDEBUG=${INSTALL_XDEBUG}
+        - PORT_XDEBUG=${PORT_XDEBUG}
+        - ID_GROUP=${ID_GROUP}
+        - ID_USER=${ID_USER}
+        - DOCKERHOST=${DOCKERHOST}
+    working_dir: /usr/share/nginx/backend
+    volumes:
+      - ../backend:/usr/share/nginx/backend
+    command: bash -c "service php${PHP_VERSION}-fpm start && tail -F anything"
+    environment:
+      PHP_IDE_CONFIG: "serverName=${PHP_IDE_CONFIG_SERVER_NAME}"
+    restart: unless-stopped
