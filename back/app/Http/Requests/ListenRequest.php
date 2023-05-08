@@ -13,8 +13,7 @@ class ListenRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'battle_id'        => 'required|int',
-            'last_turn_number' => 'required|int',
+            'battle_id' => 'required|int',
         ];
     }
 }
